@@ -1,5 +1,4 @@
 // server.js
-// Node.js backend for Jessie Craft's Photoshop Portfolio
 
 // ====== IMPORTS ======
 import express from "express";

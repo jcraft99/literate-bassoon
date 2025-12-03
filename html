@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WK5 Lab – Steeds of Rivendell</title>
+    <style>
+        body {
+            background: #e0e0e0;
+            font-family: Arial, sans-serif;
+        }
+        #bannerCanvas {
+            border: 1px solid #000;
+            background-color: #d7e8d0;
+            display: block;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="bannerCanvas" width="1100" height="300"></canvas>
+
+<script>
+// Get the canvas + context
+var c = document.getElementById("bannerCanvas");
+var ctx = c.getContext("2d");
+
+// -----------------------------------------------------------
+// STEP 1: DRAW BACKGROUND IMAGE (the horse sketch)
+// -----------------------------------------------------------
+var img = new Image();
+img.src = "images/horse.png";  // Make sure your image is inside an "images" folder
+
+img.onload = function () {
+
+    // Draw image lightly in the background
+    ctx.globalAlpha = 0.4;
+    ctx.drawImage(img, 100, 20, 900, 260);
+    ctx.globalAlpha = 1.0;
+
+    // -----------------------------------------------------------
+    // STEP 4: DRAWING THE TEXT
+    // -----------------------------------------------------------
+
+    // Title shadow
+    ctx.font = "italic 48px arial";
+    ctx.fillStyle = "rgba(50,50,50,0.5)";
+    ctx.fillText("The Steeds of Rivendell", 203, 152);
+
+    // Title main text
+    ctx.fillStyle = "#669966";
+    ctx.fillText("The Steeds of Rivendell", 200, 150);
+
+    // Save before rotating for subtitle
+    ctx.save();
+
+    // Move + rotate 90 degrees
+    ctx.translate(920, 70);
+    ctx.rotate(Math.PI / 2);
+
+    // Subtitle shadow
+    ctx.font = "bold 38px arial";
+    ctx.textAlign = "left";
+    ctx.fillStyle = "rgba(60,60,60,0.8)";
+    ctx.fillText("Ride On!", -2, -2);
+
+    // Subtitle main text
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText("Ride On!", 0, 0);
+
+    ctx.restore();
+
+    // -----------------------------------------------------------
+    // STEP 5: ADD LINE DRAWINGS (mountains)
+    // -----------------------------------------------------------
+
+    var startX = 700;
+    var startY = 45;
+
+    ctx.strokeStyle = "#ffffff";
+
+    // Line 1
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX - 50, startY + 30);
+    ctx.stroke();
+
+    // Line 2
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX + 15, startY + 15);
+    ctx.stroke();
+
+    // Line 3
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.moveTo(startX - 50, startY + 30);
+    ctx.lineTo(startX - 80, startY + 10);
+    ctx.stroke();
+
+    // Line 4
+    ctx.beginPath();
+    ctx.moveTo(startX + 50, startY);
+    ctx.lineWidth = 5;
+    ctx.lineTo(startX + 65, startY + 15);
+    ctx.stroke();
+};
+</script>
+
+</body>
+</html>
